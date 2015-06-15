@@ -1,0 +1,37 @@
+{
+  "name": "carrot-consumer",
+  "version": "0.1.0",
+  "description": "Boilerplate wrapper for using jackrabbit",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.27",
+    "node-uuid": "^1.4.3",
+    "amqplib": "^0.3.2",
+    "jackrabbit": "^3.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HotelQuickly/carrot-consumer.git"
+  },
+  "keywords": [
+    "rabbit"
+  ],
+  "author": "Seth Price <seth.price@hotelquickly.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "2.9.27",
+    "jackrabbit": "3.0.8",
+    "node-uuid": "1.4.3"
+  },
+  "bugs": {
+    "url": "https://github.com/HotelQuickly/carrot-consumer/issues"
+  },
+  "homepage": "https://github.com/HotelQuickly/carrot-consumer"
+}
