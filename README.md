@@ -6,10 +6,10 @@ Simple wrapper around jackrabbit to provide a pipe to another queue onJob, as we
 Usage
 =====
 
-* 'npm i carrot-consumer'
+* `npm i carrot-consumer --save`
 * See examples folder
 
-You can manually provide the ampq url `{ queueUrl: 'whatever' }` when you instantiate or it will be automatically detected from `AMPQ_URL` environment variable
+You can manually provide the ampq url `{ queueUrl: 'whatever' }` when you instantiate or it will be automatically detected from `AMQP_URL` environment variable
 
 Local Usage / Development
 ====

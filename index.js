@@ -32,7 +32,7 @@ function Consumer( opts, ready ) {
         pipeName,
         prefetch
     
-    queueUrl = opts.queueUrl || process.env.AMPQ_URL || 'amqp://localhost'
+    queueUrl = opts.queueUrl || process.env.AMQP_URL || 'amqp://localhost'
     prefetch = opts.prefetch || 1
     queueName = opts.queueName
     queue = Promise.promisifyAll( jackrabbit( queueUrl ) )
