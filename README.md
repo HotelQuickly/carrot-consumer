@@ -17,7 +17,7 @@ Local Usage / Development
 * Clone this
 * `npm i`
 * `node examples/generate.js` give it little bit
-*  Monitor you queue wait for 3k msgs, kill it
+*  Monitor your queue wait for 3k msgs, kill it
 * in one terminal `node examples/first.js`
 * in another `node examples/second.js`
 * rerun the generator if you want to watch more useless stuff go by
