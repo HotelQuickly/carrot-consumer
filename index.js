@@ -20,22 +20,22 @@ Queue.prototype.publish = function(obj, replyHandler) {
 }
 
 function Consumer( opts, ready ) {
-    
+
     if ( !opts.queueName ) {
         throw new Error('Must provide { queueName: "string"}')
     }
-    
+
     let onJob,
         queue,
         queueUrl,
         queueName,
         pipeName,
         prefetch
-    
+
     queueUrl = opts.queueUrl || process.env.AMQP_URL || 'amqp://localhost'
     prefetch = opts.prefetch || 1
     queueName = opts.queueName
-    queue = Promise.promisifyAll( jackrabbit( queueUrl ) )
+    queue = Promise.promisifyAll( jackrabbit( queueUrl, prefetch ) )
     onJob = opts.onJob
     pipeName = opts.pipeName
 
@@ -50,30 +50,30 @@ function Consumer( opts, ready ) {
             .then(onConnect)
             .catch(onBootError)
     }
-    
+
     function onConnect() {
         queue.createAsync(queueName, { prefetch: prefetch })
             .then(onCreated)
             .catch(onBootError)
     }
-    
+
     function onCreated() {
         if ( onJob ) {
             queue.handle(queueName, handlerWrapper)
         }
-        
+
         ready(null, queue)
-        
+
         function handlerWrapper( job, ack ) {
             onJob(job, ack, pipe)
         }
-        
+
         function pipe( msg ) {
             return queue.publishAsync(pipeName, msg)
         }
 
     }
-    
+
     function onBootError(err) {
         console.log('boot err called')
         ready(err, null)
@@ -82,10 +82,10 @@ function Consumer( opts, ready ) {
 }
 
 module.exports = function createConsumer( opts ) {
-    
+
     return new Promise(function(resolve, reject) {
         let consumer = new Consumer( opts, ready )
-        
+
         function ready(err, queue) {
             if (err) {
                 return reject(err)
